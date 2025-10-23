@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+  <title>Zoha Shaikh Portfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html, body {
+      background: linear-gradient(to right, #0F172A, #1E3A8A);
+      color: #E2E8F0;
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://img.freepik.com/free-photo/programming-background-collage_23-2149901780.jpg") center/cover no-repeat;
+      opacity: 0.2;
+      z-index: 0;
+      filter: brightness(1.1) contrast(1.1);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 60px;
+      position: relative;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #E2E8F0;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #E2E8F0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-left: 20px;
+      transition: 0.3s;
+    }
+
+    .links a:hover {
+      color: #3B82F6;
+    }
+
+    .hamburg {
+      display: none;
+      font-size: 1.8rem;
+      color: #E2E8F0;
+      cursor: pointer;
+    }
+
+    .home {
+      width: 100%;
+      min-height: calc(100vh - 100px);
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 0 5%;
+    }
+
+    .home-img img {
+      width: 350px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #2563EB;
+      box-shadow: 0 0 30px #1D4ED8;
+      transition: transform 0.3s ease;
+    }
+
+    .home-img img:hover {
+      transform: scale(1.1);
+    }
+
+    .home-text {
+      width: 50%;
+      color: #E2E8F0;
+    }
+
+    .home-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px #1D4ED8;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px 15px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    .home-text h1 span {
+      color: #FFFFFF;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px #1D4ED8;
+    }
+
+    .home-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .home-text h3 span {
+      color: #3B82F6;
+      font-weight: 600;
+      text-shadow: 0 0 20px #1D4ED8;
+    }
+
+    .home-text p {
+      max-width: 500px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #E2E8F0;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a i {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      border: 2px solid #2563EB;
+      border-radius: 50%;
+      color: #2563EB;
+      font-size: 1.2rem;
+      margin-right: 15px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .social-icons a i:hover {
+      background-color: #2563EB;
+      color: white;
+      transform: scale(1.2);
+      box-shadow: 0 0 20px #3B82F6, 0 0 40px #3B82F6;
+      border-color: #3B82F6;
+    }
+
+    .btn {
+      background-color: #2563EB;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px #1D4ED8;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .btn:hover {
+      background-color: #1D4ED8;
+      box-shadow: 0 0 25px #3B82F6, 0 0 50px #3B82F6;
+      transform: translateY(-2px);
+    }
+
+    .about-section {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to right, #0F172A, #1E3A8A);
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px #1D4ED8;
+      z-index: 1000;
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+      animation: popupFadeIn 0.4s ease-out;
+      overflow-y: auto;
+      max-height: 80vh;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .about-section img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      border: 4px solid #2563EB;
+      box-shadow: 0 0 30px #1D4ED8;
+      transition: transform 0.3s ease;
+    }
+
+    .about-section img:hover {
+      transform: scale(1.1);
+    }
+
+    .about-section h2 {
+      font-size: 1.8rem;
+      color: #3B82F6;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px #1D4ED8;
+    }
+
+    .about-section p {
+      margin: 15px 0;
+      font-size: 1rem;
+      color: #E2E8F0;
+      line-height: 1.7;
+    }
+
+    .about-section a {
+      display: inline-block;
+      padding: 1px 15px;
+      background-color: #2563EB;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px #1D4ED8;
+    }
+
+    .about-section a:hover {
+      background-color: #1D4ED8;
+      box-shadow: 0 0 30px #3B82F6;
+      transform: translateY(-2px);
+    }
+
+    .close-btn {
+      background-color: #2563EB;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 6px;
+      box-shadow: 0 0 20px #1D4ED8;
+      display: inline-block;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .close-btn:hover {
+      background-color: #1D4ED8;
+      box-shadow: 0 0 30px #3B82F6;
+    }
+
+    .skills-section {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to right, #0F172A, #1E3A8A);
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px #1D4ED8;
+      z-index: 1000;
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+      overflow-y: auto;
+      max-height: 80vh;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .skills-section .skills-content {
+      text-align: left;
+      margin: 15px 0;
+      padding-right: 20px;
+      height: auto;
+    }
+
+    .services-section {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to right, #0F172A, #1E3A8A);
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px #1D4ED8;
+      z-index: 1000;
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+      overflow-y: auto;
+      max-height: 80vh;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .services-section h2 {
+      font-size: 1.8rem;
+      color: #3B82F6;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px #1D4ED8;
+    }
+
+    .services-section .services-content {
+      text-align: left;
+      margin: 15px 0;
+      padding-right: 20px;
+      height: auto;
+    }
+
+    .about-section img,
+    .skills-section img,
+    .services-section img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      border: 4px solid #2563EB;
+      box-shadow: 0 0 30px #1D4ED8;
+      transition: transform 0.3s ease;
+    }
+
+    .about-section img:hover,
+    .skills-section img:hover,
+    .services-section img:hover {
+      transform: scale(1.1);
+    }
+
+    .skills-section h2 {
+      font-size: 1.8rem;
+      color: #3B82F6;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px #1D4ED8;
+    }
+
+    .contact-section {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to right, #0F172A, #1E3A8A);
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px #1D4ED8;
+      z-index: 1000;
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+      overflow-y: auto;
+      max-height: 80vh;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .contact-section h2 {
+      font-size: 1.8rem;
+      color: #3B82F6;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px #1D4ED8;
+    }
+
+    .contact-section p {
+      margin: 10px 0;
+      font-size: 1rem;
+      color: #E2E8F0;
+      line-height: 1.5;
+    }
+
+    .contact-section form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-section input,
+    .contact-section textarea {
+      width: 90%;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+
+    .contact-section button {
+      background-color: #2563EB;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px #1D4ED8;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .contact-section button:hover {
+      background-color: #1D4ED8;
+      box-shadow: 0 0 30px #3B82F6;
+      transform: translateY(-2px);
+    }
+
+    .contact-section .social-icons {
+      margin: 15px 0;
+    }
+
+    .contact-section .social-icons a i {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 2px solid #2563EB;
+      border-radius: 50%;
+      color: #2563EB;
+      font-size: 1rem;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-section .social-icons a i:hover {
+      background-color: #2563EB;
+      color: white;
+      transform: scale(1.2);
+      box-shadow: 0 0 20px #3B82F6, 0 0 40px #3B82F6;
+      border-color: #3B82F6;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes popupFadeIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .about-section,
+    .skills-section,
+    .services-section,
+    .contact-section {
+      animation: popupFadeIn 0.4s ease-out;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        padding: 20px 30px;
+      }
+
+      .home {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        min-height: auto;
+        padding: 20px 0;
+      }
+
+      .home-img img {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 20px;
+      }
+
+      .home-text {
+        width: 90%;
+      }
+
+      .home-text h1 {
+        font-size: 2rem;
+      }
+
+      .home-text h3 {
+        font-size: 1.5rem;
+      }
+
+      .home-text p {
+        font-size: 1rem;
+      }
+
+      .hamburg {
+        display: block;
+      }
+
+      .links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: #1E3A8A;
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+        z-index: 999;
+      }
+
+      .links.active {
+        display: flex;
+      }
+
+      .links a {
+        margin: 10px 0;
+        font-size: 1.2rem;
+      }
+
+      .social-icons a i {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+        margin-right: 10px;
+      }
+
+      .btn {
+        padding: 10px 25px;
+      }
+
+      .about-section h2,
+      .skills-section h2,
+      .services-section h2,
+      .contact-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .about-section p,
+      .skills-section p,
+      .services-section p,
+      .contact-section p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      nav {
+        padding: 15px 20px;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+      }
+
+      .hamburg {
+        font-size: 1.5rem;
+      }
+
+      .home-img img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .home-text h1 {
+        font-size: 1.5rem;
+      }
+
+      .home-text h3 {
+        font-size: 1.2rem;
+      }
+
+      .home-text p {
+        font-size: 0.9rem;
+      }
+
+      .links a {
+        font-size: 1rem;
+      }
+
+      .social-icons a i {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.9rem;
+        margin-right: 8px;
+      }
+
+      .btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+      }
+
+      .about-section,
+      .skills-section,
+      .services-section,
+      .contact-section {
+        padding: 10px;
+        max-width: 95%;
+      }
+
+      .close-btn {
+        padding: 3px 6px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Zoha Shaikh</div>
+    <div class="links">
+      <a href="#" onclick="goHome()">Home</a>
+      <a href="#" id="aboutLink">About</a>
+      <a href="#" id="skillsLink">Skills</a>
+      <a href="#" id="servicesLink">Services</a>
+      <a href="#" id="contactLink">Contact Us</a>
+    </div>
+    <i class="fas fa-bars hamburg" onclick="toggleMenu()"></i>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="home">
+    <div class="home-img">
+      <img src="https://chriskirby.net/content/images/2024/02/AICodingAssistant.png" alt="Zoha Shaikh" />
+    </div>
+    <div class="home-text">
+      <h1>Hey I'm <span>Zoha Shaikh</span></h1>
+      <h3>I'm a <span>AI Developer, Graphic Designer</span></h3>
+      <p>Created responsive websites, AI-generated designs, and optimized digital content with SEO. Skilled in HTML, Python, MySQL, and infographic design.</p>
+      <div class="social-icons">
+        <a href="https://x.com/ShykhZoha52531?t=dx75v-FZE8syrCfT2LsOxw&s=08" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/zohashaikhdeveloper?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=zohashykh6@gmail.com&su=Contact%20from%20Portfolio" target="_blank">
+  <i class="fas fa-envelope"></i>
+</a>
+      </div>
+      <a href="file:///C:/Users/M%20%20K%20%20T/Downloads/CV_2025051900592969.pdf" class="btn" download>Download CV</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <div class="about-section" id="aboutSection">
+    <div class="close-btn" onclick="closeAbout()">Close</div>
+    <h2>About Me</h2>
+    <img src="https://www.shutterstock.com/image-vector/ai-integrated-computer-processor-robot-600nw-2462587447.jpg" alt="Zoha Shaikh" />
+    <p>Hey there! I'm Zoha Shaikh — an AI Developer & Creative Graphic Designer. I specialize in building smart, visually appealing digital experiences that combine AI innovation with design creativity. From responsive websites and AI-generated designs to optimized SEO content, I bring ideas to life through code and creativity. With skills in HTML, Python, MySQL, and modern design tools, I focus on turning complex concepts into clean, functional, and engaging digital solutions.</p>
+    <a href="https://www.linkedin.com/in/zohashaikhdeveloper" target="_blank">Connect with me on LinkedIn</a>
+  </div>
+
+  <!-- Skills Section -->
+  <div class="skills-section" id="skillsSection">
+    <div class="close-btn" onclick="closeSkills()">Close</div>
+    <h2>My Skills</h2>
+    <div class="skills-content">
+      <h3>💻 Development</h3>
+      <img src="https://www.shutterstock.com/image-vector/ai-integrated-computer-processor-robot-600nw-2462587447.jpg" alt="Development" />
+      <p>HTML, CSS, JavaScript</p>
+      <p>Python, MySQL</p>
+      <p>AI tools (e.g., TensorFlow, OpenAI API)</p>
+      <p>Node.js, React</p>
+      <p>Version Control (Git)</p>
+
+      <h3>🎨 Design</h3>
+      <img src="https://5.imimg.com/data5/BZ/GC/JF/GLADMIN-41013994/selection-013.png" alt="Design Tools" />
+      <p>Adobe Photoshop, Illustrator</p>
+      <p>Figma, Canva</p>
+      <p>Infographic & Logo Design</p>
+      <p>UI/UX Design</p>
+
+      <h3>🌐 SEO Optimization</h3>
+      <img src="https://www.fusionlancers.com/assets/uploads/media-uploader/fusionlancers-beginners-guide-to-seo-in-digital-marketing1734758262.webp" alt="SEO Optimization" />
+      <p>On-page SEO strategies</p>
+      <p>Boosting Google visibility and audience reach</p>
+      <p>Keyword Research</p>
+      <p>Analytics (Google Analytics)</p>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="services-section" id="servicesSection">
+    <div class="close-btn" onclick="closeServices()">Close</div>
+    <h2>My Services</h2>
+    <div class="services-content">
+      <h3>💻 Web Development</h3>
+      <img src="https://www.shutterstock.com/image-vector/ai-integrated-computer-processor-robot-600nw-2462587447.jpg" alt="Web Development" />
+      <p>Custom responsive websites</p>
+      <p>Frontend and backend development</p>
+      <p>API integration</p>
+
+      <h3>🎨 Graphic Design</h3>
+      <img src="https://5.imimg.com/data5/BZ/GC/JF/GLADMIN-41013994/selection-013.png" alt="Graphic Design" />
+      <p>Logo and branding design</p>
+      <p>Infographic creation</p>
+      <p>UI/UX design services</p>
+
+      <h3>🤖 AI Solutions</h3>
+      <img src="https://www.shutterstock.com/image-vector/ai-integrated-computer-processor-robot-600nw-2462587447.jpg" alt="AI Solutions" />
+      <p>AI model development</p>
+      <p>Chatbot implementation</p>
+      <p>Data analysis with AI</p>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact-section" id="contactSection">
+    <div class="close-btn" onclick="closeContact()">Close</div>
+    <h2>Contact Me</h2>
+    <p>My email: zohashykh6@gmail.com</p>
+    <form action="mailto:zohashykh6@gmail.com" method="post" enctype="text/plain">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/zohashaikhdeveloper?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/zohaa_shykh?igsh=MW5mZ2pjdGNzcTY5dQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/ShykhZoha52531?t=dx75v-FZE8syrCfT2LsOxw&s=08" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Hamburger Menu Toggle
+    function toggleMenu() {
+      const links = document.querySelector('.links');
+      links.classList.toggle('active');
+    }
+
+    // Function to close all sections
+    function closeAllSections() {
+      document.getElementById('aboutSection').style.display = 'none';
+      document.getElementById('skillsSection').style.display = 'none';
+      document.getElementById('servicesSection').style.display = 'none';
+      document.getElementById('contactSection').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Home function to go back to main view
+    function goHome() {
+      closeAllSections();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const aboutLink = document.getElementById('aboutLink');
+      const aboutSection = document.getElementById('aboutSection');
+      const skillsLink = document.getElementById('skillsLink');
+      const skillsSection = document.getElementById('skillsSection');
+      const servicesLink = document.getElementById('servicesLink');
+      const servicesSection = document.getElementById('servicesSection');
+      const contactLink = document.getElementById('contactLink');
+      const contactSection = document.getElementById('contactSection');
+
+      aboutLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        closeAllSections();
+        aboutSection.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+
+      window.closeAbout = function () {
+        closeAllSections();
+      };
+
+      skillsLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        closeAllSections();
+        skillsSection.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+
+      window.closeSkills = function () {
+        closeAllSections();
+      };
+
+      servicesLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        closeAllSections();
+        servicesSection.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+
+      window.closeServices = function () {
+        closeAllSections();
+      };
+
+      contactLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        closeAllSections();
+        contactSection.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+
+      window.closeContact = function () {
+        closeAllSections();
+      };
+    });
+  </script>
+</body>
+</html>
